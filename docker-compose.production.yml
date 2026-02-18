@@ -28,7 +28,8 @@ services:
   frontend:
     image: vladislavdf/kittygram_frontend:latest
     volumes:
-      - static:/usr/share/nginx/html
+      - static:/static
+    command: cp -r /build/. /static/
   
   gateway:
     image: vladislavdf/kittygram_gateway:latest
