@@ -5,7 +5,7 @@ import webcolors
 from django.core.files.base import ContentFile
 from rest_framework import serializers
 
-from .models import Achievement, AchievementCat, Cat, User
+from .models import Achievement, AchievementCat, Cat,
 
 
 class Hex2NameColor(serializers.Field):
@@ -63,18 +63,18 @@ class CatSerializer(serializers.ModelSerializer):
         if 'achievements' not in self.initial_data:
             cat = Cat.objects.create(**validated_data)
             return cat
-        else:
-            achievements = validated_data.pop('achievements')
-            cat = Cat.objects.create(**validated_data)
-            for achievement in achievements:
-                current_achievement, status = Achievement.objects.get_or_create(
-                    **achievement
-                )
-                AchievementCat.objects.create(
-                    achievement=current_achievement,
-                    cat=cat
-                )
-            return cat
+        
+        achievements = validated_data.pop('achievements')
+        cat = Cat.objects.create(**validated_data)
+        for achievement in achievements:
+            current_achievement, status = Achievement.objects.get_or_create(
+                **achievement
+            )
+            AchievementCat.objects.create(
+                achievement=current_achievement,
+                cat=cat
+            )
+        return cat
 
     def update(self, instance, validated_data):
         instance.name = validated_data.get('name', instance.name)

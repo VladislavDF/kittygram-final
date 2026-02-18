@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-
 User = get_user_model()
 
 
@@ -25,7 +24,7 @@ class Cat(models.Model):
         through='AchievementCat'
         )
     image = models.ImageField(
-        upload_to='cats/images/', 
+        upload_to='cats/images/',
         null=True,  
         default=None
         )
