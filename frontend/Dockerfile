@@ -1,13 +1,9 @@
-FROM node:18
+FROM node:18-alpine as build
 WORKDIR /app
-
-COPY package.json package.json
-COPY package-lock.json package-lock.json
-
-RUN npm ci
-
+COPY package*.json ./
+RUN npm ci --only=production
 COPY . .
 RUN npm run build
-RUN npm install --global http-server
 
-CMD ["npx", "-y", "http-server", "-p", "8000", "/app/build"]
+FROM nginx:1.22.1
+COPY --from=build /app/build /usr/share/nginx/html
