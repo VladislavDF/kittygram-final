@@ -86,7 +86,7 @@ jobs:
             docker-compose -f docker-compose.production.yml exec -T backend python manage.py migrate --noinput
             docker-compose -f docker-compose.production.yml exec -T backend python manage.py collectstatic --noinput
 
-  auto_tests:
+  run_auto_tests:
     runs-on: ubuntu-latest
     needs: deploy
     strategy:
@@ -108,7 +108,7 @@ jobs:
 
   send_message:
     runs-on: ubuntu-latest
-    needs: auto_tests
+    needs: run_auto_tests
     steps:
       - uses: actions/checkout@v3
       - name: Send message
