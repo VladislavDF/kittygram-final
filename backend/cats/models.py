@@ -29,6 +29,12 @@ class Cat(models.Model):
         default=None
         )
 
+    class Meta:
+        ordering = ['-id']  # Сортировка по id в обратном порядке
+        # Можно также сортировать по другим полям:
+        # ordering = ['name']  # по имени
+        # ordering = ['-birth_year']  # по году рождения (новые сначала)
+
     def __str__(self):
         return self.name
 
