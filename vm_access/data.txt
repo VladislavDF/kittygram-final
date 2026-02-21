@@ -1,0 +1,12 @@
+Имя ресурса: r-mesto-api-1-909683883
+Данные для подключения к виртуальной машине. IP-адрес -- 178.154.196.55.
+Приватный ключ:
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZWQyNTUx
+OQAAACDyWE7uNPlkV/svyyFGqqQWV6i858cG23vDLSI4e0ZnvwAAAIjH562px+etqQAAAAtzc2gt
+ZWQyNTUxOQAAACDyWE7uNPlkV/svyyFGqqQWV6i858cG23vDLSI4e0ZnvwAAAEAYWJlO5J7PLFwK
+IxfhOLYsSMHYnNuSSOAVmat7OBe4TPJYTu40+WRX+y/LIUaqpBZXqLznxwbbe8MtIjh7Rme/AAAA
+AAECAwQF
+-----END OPENSSH PRIVATE KEY-----
+
+Команда подключения к серверу: ssh -i C:\Users\T-1000\vm_access\id_rsa ubuntu@178.154.196.55
