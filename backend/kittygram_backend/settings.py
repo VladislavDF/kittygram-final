@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+<<<<<<< HEAD
 from django.core.management.utils import get_random_secret_key
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,6 +10,18 @@ SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+=======
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+SECRET_KEY = 'django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$'
+
+DEBUG = True
+
+ALLOWED_HOSTS = ['*']
+
+STATIC_ROOT = "/app/collected_static"
+>>>>>>> de99b9c5dc6bba2e839571e3df01b6eb49c664be
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -62,11 +75,21 @@ DATABASES = {
         'USER': os.getenv('POSTGRES_USER', 'django'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
         'HOST': os.getenv('DB_HOST', ''),
+<<<<<<< HEAD
         'PORT': os.getenv('DB_PORT', '5432')
+=======
+        'PORT': os.getenv('DB_PORT', 5432)
+>>>>>>> de99b9c5dc6bba2e839571e3df01b6eb49c664be
     }
 }
 
 
+<<<<<<< HEAD
+=======
+# Password validation
+# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+
+>>>>>>> de99b9c5dc6bba2e839571e3df01b6eb49c664be
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.'
@@ -117,4 +140,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> de99b9c5dc6bba2e839571e3df01b6eb49c664be

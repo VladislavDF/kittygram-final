@@ -1,9 +1,0 @@
-POSTGRES_DB=kittygram
-POSTGRES_USER=kittygram_user
-POSTGRES_PASSWORD=kittygram_password
-DB_HOST=db
-DB_PORT=5432
-
-SECRET_KEY=django-insecure-your-secret-key-here-change-in-production
-DEBUG=False
-ALLOWED_HOSTS=localhost,127.0.0.1,84.252.128.5,your-domain.com
