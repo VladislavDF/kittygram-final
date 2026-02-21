@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Cat, Achievement, AchievementCat
+
+from .models import Achievement, AchievementCat, Cat
+
 
 @admin.register(Cat)
 class CatAdmin(admin.ModelAdmin):
@@ -8,10 +10,12 @@ class CatAdmin(admin.ModelAdmin):
     search_fields = ('name', 'owner__username')
     raw_id_fields = ('owner',)
 
+
 @admin.register(Achievement)
 class AchievementAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
+
 
 @admin.register(AchievementCat)
 class AchievementCatAdmin(admin.ModelAdmin):
