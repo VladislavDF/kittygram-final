@@ -81,8 +81,10 @@ jobs:
             docker-compose -f docker-compose.production.yml pull
             docker-compose -f docker-compose.production.yml down
             docker-compose -f docker-compose.production.yml up -d
-            docker-compose -f docker-compose.production.yml exec backend python manage.py migrate --noinput
-            docker-compose -f docker-compose.production.yml exec backend python manage.py collectstatic --noinput
+            sleep 10
+            docker-compose -f docker-compose.production.yml exec -T backend python manage.py makemigrations
+            docker-compose -f docker-compose.production.yml exec -T backend python manage.py migrate --noinput
+            docker-compose -f docker-compose.production.yml exec -T backend python manage.py collectstatic --noinput
 
   auto_tests:
     runs-on: ubuntu-latest
