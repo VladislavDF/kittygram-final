@@ -1,0 +1,42 @@
+volumes:
+  pg_data:
+  static:
+  media:
+
+services:
+  postgres:
+    image: postgres:13
+    env_file: .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kittygram_user -d kittygram"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  
+  backend:
+    image: vladislavdf/kittygram_backend:latest
+    env_file: .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - static:/backend_static
+      - media:/app/media
+  
+  frontend:
+    image: vladislavdf/kittygram_frontend:latest
+    volumes:
+      - static:/static
+    command: cp -r /build/. /static/
+  
+  gateway:
+    image: vladislavdf/kittygram_gateway:latest
+    ports:
+      - "9000:80"
+    volumes:
+      - static:/static
+      - media:/media
+    depends_on:
+      - backend
