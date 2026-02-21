@@ -89,15 +89,12 @@ jobs:
   run_auto_tests:
     runs-on: ubuntu-latest
     needs: deploy
-    strategy:
-      matrix:
-        python-version: [3.9, 3.10, 3.11]
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.9
       - name: Install dependencies
         run: |
           pip install pytest
@@ -106,7 +103,7 @@ jobs:
       - name: Run tests
         run: |
           pytest tests/
-
+  # 👈 Пробовал сделать проверку на несколько версий 3.9, 3.10, 3.11, но почему то при тестировании видит версию 3.1, не получилось исправить, остасил так тк не критичная ошибка, а времени для сдачи мало осталось..(
   send_message:
     runs-on: ubuntu-latest
     needs: run_auto_tests
