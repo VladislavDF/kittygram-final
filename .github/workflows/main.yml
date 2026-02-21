@@ -1,4 +1,4 @@
-name: Kittygram workflow
+name: Kittygram_workflow
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  tests:
+  run_tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -26,7 +26,7 @@ jobs:
   build_and_push_to_docker_hub:
     name: Push Docker images to Docker Hub
     runs-on: ubuntu-latest
-    needs: tests
+    needs: run_tests
     steps:
       - uses: actions/checkout@v3
       - name: Set up Docker Buildx
